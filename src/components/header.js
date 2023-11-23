@@ -1,6 +1,9 @@
 function Header({data}){
     return(
-        <h1 style={{backgroundColor:'grey',height:'200px'}} >hai am a {data}</h1>
+        <div style={{backgroundColor:'lightblue',height:'200px',margin:'5px'}} >
+            <h1 > hai am a {data.name}</h1>
+            <small>Email {data.Email}</small>
+        </div>
     )
 }
 
