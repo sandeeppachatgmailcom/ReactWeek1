@@ -3,7 +3,7 @@ import React from 'react'
 function TestButton(props) {
   return (
     <div>
-      <h1>hai this is sandeep {props.name} </h1>
+      <h1 className='col-12 text text-center'> {props.name} </h1>
     </div>
   )
 }
