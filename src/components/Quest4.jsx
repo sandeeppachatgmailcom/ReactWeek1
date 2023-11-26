@@ -1,29 +1,47 @@
-import React, {useState,useEffect,useRef} from 'react';
+import React,{useEffect, useState} from 'react';
 
+function ToDoApp(){
+    const initialTasks = ['sandeep', 'sanoop', 'chandhini', 'satheesan', 'pushpalatha'];
 
+    let [value,setValue]= useState('')
+    const [tasks, setTasks] = useState(initialTasks);
 
-function Quest4(){
-    const [data,SetData]=useState('')
-    const print = ()=>{
-        console.log(data) 
-        inputRef.current.focus();
+    const TakeInput = (event)=>{
+        setValue(event.target.value)
+        console.log(value)
+    };
+
+    const addTask = ()=>{
+        setTasks([...tasks,value])
+        setValue('')
     }
-    const inputRef = useRef('')
-    const updateCurrentValue =(event)=>{
-        SetData(event.target.value)
+    const reloadList =()=>{
+        return tasks.map((item,index)=>(
+                <li key={'li'+index}> {item}  <button key={index} className='btn border' > del</button></li>
+            )) 
+        
     }
 
     useEffect(()=>{
-        print();
-    },[])
+        reloadList();
+    },[tasks])
 
     return(
         <div>
-            <label className='col-12'> Enter your Name</label>
-            <input ref={inputRef}   className='text border col-12' type="text" name="" onChange={updateCurrentValue}  /> <br />
-            <button className='btn btn-secondary col-12' onClick={print} type="button">submit</button>
+            <div className='container-fluid'>
+                <input onChange={TakeInput} className='text rounded border' type="text" name="" id="" />
+                <button onClick={addTask} className='btn border' type="button">Add</button>
+            </div>
+            <div>
+                <ul>
+                    {reloadList}     
+                </ul>
+            </div>
+
         </div>
     )
 }
+ 
 
-export default Quest4;
+
+export default ToDoApp;
