@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react';
 
-function Increment(){
-    const [count,setCount] = useState(1)
+function Increment(props){
+    const [count,setCount] = useState(props.start)
     const [data,setData]=useState(null)
     const fetchData = async ()=>{
         await fetch(`https://jsonplaceholder.typicode.com/users/${count}`)
